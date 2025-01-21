@@ -10,18 +10,19 @@ on:
             - main
         paths: terraform/**
 env:
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-    AWS_REGION: us-east-1
-    BUCKET_NAME: ${{ secrets.TF_STATE_S3_NAME }}
-    EKS_NAME: vprofile-eks
+  AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+  AWS_REGION: us-east-1
+  BUCKET_NAME: ${{ secrets.TF_STATE_S3_NAME }}
+  EKS_NAME: vprofile-eks
     
 jobs:
     terraform-plan:
         runs-on: ubuntu-latest
         defaults:
             run:
-                working-directory: terraform/ 
+              shell: bash
+              working-directory: terraform/ 
         
         steps:
           - name: Check out source code
